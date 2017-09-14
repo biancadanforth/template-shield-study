@@ -6,7 +6,7 @@
 `npm run build`
 
 
-Note: `addon.xpi` is a symbolic link to the extension's true XPI, which is named based on the study's unique addon ID specified in `package.json`.
+Note: `linked-addon.xpi` is a symbolic link to the extension's true XPI, which is named based on the study's unique addon ID specified in `package.json`.
 
 at second shell/prompt, watch files for changes to rebuild:
 

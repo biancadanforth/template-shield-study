@@ -27,7 +27,8 @@ function cleanup {
 trap cleanup EXIT
 
 # fill templates, could be fancier
-alias moustache='/node_modules/bin/mustache'
+shopt -s expand_aliases
+alias mustache='./node_modules/.bin/mustache'
 echo 'Filling mustache template files...'
 mustache package.json templates/install.rdf.mustache > addon/install.rdf
 mustache package.json templates/chrome.manifest.mustache > addon/chrome.manifest
@@ -49,7 +50,7 @@ rm -f linked-addon.xpi
 ln -s "${XPI_NAME}" linked-addon.xpi
 
 echo
-echo "SUCCESS: xpi at ${BASE_DIR}/dist/${XPI}"
+echo "SUCCESS: xpi at ${BASE_DIR}/dist/${XPI_NAME}"
 echo "SUCCESS: symlinked xpi at ${BASE_DIR}/dist/linked-addon.xpi"
 
 popd > /dev/null

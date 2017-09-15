@@ -135,15 +135,15 @@ module.exports.promiseUrlBar = (driver) => {
     By.id("urlbar")), 1000);
 };
 
-function getModifierKey() {
+module.exports.getModifierKey = () => {
   const modifierKey = process.platform === "darwin" ?
     webdriver.Key.COMMAND : webdriver.Key.CONTROL;
   return modifierKey;
-}
+};
 
 module.exports.copyUrlBar = async(driver) => {
   const urlBar = await module.exports.promiseUrlBar(driver);
-  const modifierKey = getModifierKey();
+  const modifierKey = module.exports.getModifierKey();
   await urlBar.sendKeys(webdriver.Key.chord(modifierKey, "A"));
   await urlBar.sendKeys(webdriver.Key.chord(modifierKey, "C"));
 };

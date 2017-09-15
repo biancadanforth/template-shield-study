@@ -11,6 +11,9 @@
 console.log("Starting up firefox");
 const utils = require("./test/utils");
 const firefox = require("selenium-webdriver/firefox");
+const webdriver = require("selenium-webdriver");
+const Key = webdriver.Key;
+const By = webdriver.By;
 
 const Context = firefox.Context;
 
@@ -37,9 +40,13 @@ const Context = firefox.Context;
 
 
     // navigate to a regular page
-    //* driver.setContext(Context.CONTENT);
-    //* await driver.get("http://github.com/mozilla");
-    //* driver.setContext(Context.CHROME);
+    // driver.setContext(Context.CONTENT);
+    // await driver.get("http://github.com/mozilla");
+    driver.setContext(Context.CHROME);
+    const urlBar = await utils.promiseUrlBar(driver);
+    const modifierKey = utils.getModifierKey();
+    const openBrowserConsole = Key.chord(modifierKey, Key.SHIFT, "j");
+    await urlBar.sendKeys(openBrowserConsole);
 
     //* await utils.copyUrlBar(driver);
   } catch (e) {

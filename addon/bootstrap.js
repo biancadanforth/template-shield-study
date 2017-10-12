@@ -8,6 +8,12 @@ Cu.import("resource://gre/modules/Console.jsm");
 Cu.import("resource://gre/modules/Services.jsm");
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 
+
+const BASERESOURCE = "template-shield-study@mozilla.com";
+
+const FEATUREPATH = `${__SCRIPT_URI_SPEC__}/../addon/lib/Feature.jsm`;
+const { feature } = Cu.import(FEATUREPATH, {});
+
 const CONFIGPATH = `${__SCRIPT_URI_SPEC__}/../Config.jsm`;
 const { config } = Cu.import(CONFIGPATH, {});
 const studyConfig = config.study;
@@ -88,6 +94,8 @@ async function startup(addonData, reason) {
 
     });
   }
+
+  console.log(new Feature.start());
 }
 
 
